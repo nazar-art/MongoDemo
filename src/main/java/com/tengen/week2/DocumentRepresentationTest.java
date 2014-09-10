@@ -14,6 +14,6 @@ public class DocumentRepresentationTest {
         doc.put("age", 13);
         doc.put("languages", Arrays.asList("english", "polish", "russian"));
         doc.put("address", new BasicDBObject("street", "Horodocka").append("city", "Lviv"));
-
+        System.out.println(doc);
     }
 }

@@ -1,4 +1,4 @@
-package com.tengen;
+package com.tengen.week1;
 
 import static spark.Spark.*;
 
