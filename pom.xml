@@ -43,6 +43,15 @@
             <artifactId>slf4j-parent</artifactId>
             <version>1.7.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.8.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb.morphia</groupId>
+            <artifactId>morphia</artifactId>
+            <version>0.108</version>
+        </dependency>
     </dependencies>
 </project>
