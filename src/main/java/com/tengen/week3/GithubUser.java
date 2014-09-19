@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Entity(value = "users", noClassnameStored = true)
+@Entity("users")
 @Indexes({
         @Index(value = "userName -followers", name = "popular"),
         @Index(value = "lastActive", name = "idle", expireAfterSeconds = 1000000000)
@@ -23,10 +23,9 @@ public class GithubUser {
     @Reference(lazy = true)
     public List<Repository> repositories = new ArrayList<>();
     public int followers = 0;
-    public int folloving = 0;
+    public int following = 0;
 
     public GithubUser() {
     }
 
-    
 }
