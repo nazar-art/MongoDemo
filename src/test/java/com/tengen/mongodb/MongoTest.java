@@ -50,9 +50,9 @@ public class MongoTest {
                 ByteArrayInputStream bais = new ByteArrayInputStream((byte[]) dbObject.get("InnerObject"));
                 ObjectInputStream ois = new ObjectInputStream(bais);
                 Inner temp = (Inner) ois.readObject();
+                System.out.println(temp.getName());
                 bais.close();
                 ois.close();
-                System.out.println(temp.getName());
             }
         } catch (Exception e) {
             e.printStackTrace();
