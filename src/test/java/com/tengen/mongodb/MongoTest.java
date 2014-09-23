@@ -8,6 +8,8 @@ import java.io.*;
 public class MongoTest {
 
     static class Inner implements Serializable {
+
+        private static final long serialVersionUID = -7955006812894257987L;
         private String name;
 
         Inner(String name) {
@@ -25,14 +27,13 @@ public class MongoTest {
 
     @Test
     public void testMongoDB() throws Exception {
-        try {
+        try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
+             ObjectOutputStream oos = new ObjectOutputStream(baos)) {
             MongoClient mongoClient = new MongoClient();
             DBCollection collection = mongoClient.getDB("test").getCollection("temp");
 
             Inner temp = new Inner("Current time: " + System.currentTimeMillis());
 
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
             oos.writeObject(temp);
             collection.insert(new BasicDBObject("InnerObject", baos.toByteArray()));
 
@@ -49,6 +50,8 @@ public class MongoTest {
                 ByteArrayInputStream bais = new ByteArrayInputStream((byte[]) dbObject.get("InnerObject"));
                 ObjectInputStream ois = new ObjectInputStream(bais);
                 Inner temp = (Inner) ois.readObject();
+                bais.close();
+                ois.close();
                 System.out.println(temp.getName());
             }
         } catch (Exception e) {
