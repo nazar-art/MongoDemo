@@ -18,8 +18,7 @@ public class FindCriteriaTest {
         }
 
         QueryBuilder builder = QueryBuilder.start("x").is(0).and("y").greaterThan(10).lessThan(70);
-        DBObject query = new BasicDBObject("x", 0)
-                .append("y", new BasicDBObject("$gt", 10).append("$lt", 90));
+        DBObject query = new BasicDBObject("x", 0).append("y", new BasicDBObject("$gt", 10).append("$lt", 90));
 
         System.out.println("\nCount:");
 //        long count = collection.count(query);
