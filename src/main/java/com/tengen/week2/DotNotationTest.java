@@ -11,6 +11,7 @@ public class DotNotationTest {
         DB courseDb = client.getDB("course");
         DBCollection lines = courseDb.getCollection("dotNotationTest");
         lines.drop();
+
         Random rand = new Random();
 
         for (int i = 0; i < 10; i++) {
